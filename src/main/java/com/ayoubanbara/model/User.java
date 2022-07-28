@@ -28,7 +28,7 @@ import org.hibernate.annotations.ColumnDefault;
                 "( lower(u.email) like :search ) order by u.email"),
 })
 @Entity
-@Table(name = "customer_users")
+@Table(name = "business_users")
 @Data
 @Accessors(chain = true)
 @ToString
