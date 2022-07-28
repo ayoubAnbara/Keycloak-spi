@@ -34,7 +34,7 @@ import static com.ayoubanbara.utils.Helpers.isNumeric;
 
 public class CustomUserStorageProviderFactory implements UserStorageProviderFactory<CustomUserStorageProvider> {
     public static final int PORT_LIMIT = 65535;
-    Map properties;
+    Map<String,String> properties;
     Map<String, EntityManagerFactory> entityManagerFactories = new HashMap<>();
 
     protected static final List<ProviderConfigProperty> configMetadata;
@@ -102,6 +102,9 @@ public class CustomUserStorageProviderFactory implements UserStorageProviderFact
                 .add()
                 .build();
     }
+
+
+
     @Override
     public List<ProviderConfigProperty> getConfigProperties() {
         return configMetadata;
@@ -109,7 +112,7 @@ public class CustomUserStorageProviderFactory implements UserStorageProviderFact
 
     @Override
     public CustomUserStorageProvider create(KeycloakSession session, ComponentModel model) {
-        properties = new HashMap();
+        properties = new HashMap<>();
         String dbConnectionName = model.getConfig().getFirst("db:connectionName");
         EntityManagerFactory entityManagerFactory = entityManagerFactories.get(dbConnectionName);
         if (entityManagerFactory == null) {

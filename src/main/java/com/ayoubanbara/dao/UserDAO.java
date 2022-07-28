@@ -35,8 +35,7 @@ public class UserDAO {
             query.setMaxResults(max);
         }
         query.setParameter("search", "%");
-        List<User> users =  query.getResultList();
-        return users;
+        return query.getResultList();
     }
 
     /*public Optional<User> getUserByUsername(String username) {
